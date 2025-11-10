@@ -165,6 +165,15 @@ public class CharacterCreator {
                     System.out.println("[2]");
                     go.move(40, 12);
                     System.out.println("Class Info");
+                    go.move(30,16);
+                    System.out.println(" ");
+                    go.move(23,17);
+                    System.out.println(" ");
+                    go.move(30,18);
+                    System.out.println(" ");
+                    go.move(36,20);
+                    System.out.print( "HP: " + GREEN + "+n" + RESET + "     ");
+                    System.out.println( "MP: " + BLUE + "+n" + RESET);
                 }
                 case "Warrior" -> {
                     box.moveable(52, 18, 20,11);
@@ -176,6 +185,15 @@ public class CharacterCreator {
                     System.out.println("[3]");
                     go.move(40, 12);
                     System.out.println("Class Info");
+                    go.move(30,16);
+                    System.out.println(" ");
+                    go.move(23,17);
+                    System.out.println(" ");
+                    go.move(30,18);
+                    System.out.println(" ");
+                    go.move(36,20);
+                    System.out.print( "HP: " + GREEN + "+n" + RESET + "     ");
+                    System.out.println( "MP: " + BLUE + "+n" + RESET);
                 }
             }
 

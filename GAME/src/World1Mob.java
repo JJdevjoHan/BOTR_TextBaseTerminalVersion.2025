@@ -1,9 +1,9 @@
-public class World1Mob {
+public class World1Mob{
     protected String name;
     protected int hp;
     protected int damage;
 
-    public World1Mob(String name, int hp, int damage) {
+    public World1Mob(String name, int hp, int damage){
         this.name = name;
         this.hp = hp;
         this.damage = damage;
@@ -13,18 +13,18 @@ public class World1Mob {
         return hp > 0;
     }
 
-    public void takeDamage(int dmg) {
+    public void takeDamage(int dmg){
         hp -= dmg;
         System.out.println(name + " takes " + dmg + " damage. HP: " + hp);
     }
 
-    public void attack(Character player) {
+    public void attack(Character player){
         System.out.println(name + " attacks " + player.name + " for " + damage + " damage.");
         player.hp -= damage;
         System.out.println(player.name + " HP: " + player.hp);
     }
 
-    public void specialSkill(Character player) {
+    public void specialSkill(Character player){
         // Default: no skill
     }
 }
@@ -49,7 +49,7 @@ class Wolf extends World1Mob {
 
 class Minotaur extends World1Mob {
     public Minotaur() {
-        super("Minotaur", 80, 15);
+        super("Minotaur", 80, 12);
     }   // lessen hp & dmg-erlo
 
     @Override
