@@ -42,7 +42,6 @@ public abstract class Character {
             this.damageBuffDuration--;
             if (this.damageBuffDuration == 0) {
                 this.temporaryDamageBuff = 0;
-                System.out.println("Your temporary damage buff has worn off.");
             }
         }
     }

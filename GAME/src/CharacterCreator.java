@@ -255,6 +255,7 @@ public class CharacterCreator {
         go.move(95, 48);
         System.out.println("Enter [1] to continue ...");
         go.move(106, 50);
+        int num = input.nextInt();
 
 
         return player;
