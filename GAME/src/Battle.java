@@ -152,6 +152,11 @@ public class Battle {
             case "Snake": CharacterIcon.Snake(162, 20); break;
             case "Giant Worm": CharacterIcon.GiantWorm(162, 20); break;
             case "Mummy": CharacterIcon.Mummy(162, 20); break;
+            //world3
+            case "GiantFrostWolves": CharacterIcon.GiantFrostWolves(162, 20); break;
+            case "SnowGolem": CharacterIcon.SnowGolem(162, 20); break;
+            case "WitchGnome": CharacterIcon.WitchGnome(162, 20); break;
+            case "Yeti": CharacterIcon.Yeti(162, 20); break;
         }
 
         go.move(157, 24);
