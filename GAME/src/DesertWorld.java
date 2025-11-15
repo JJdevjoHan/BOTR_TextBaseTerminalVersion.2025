@@ -69,7 +69,7 @@ public class DesertWorld {
             int direction = input.nextInt();
 
             if (direction >= 1 && direction <= 4) {
-                if (random.nextInt(100) < 80) { 
+                if (random.nextInt(100) < 75) {  // 75% encounter
                     triggerEncounter(direction); 
                     if (!player.isAlive()) {
                         inWorld = false; 
@@ -363,7 +363,7 @@ public class DesertWorld {
         displayPlayerStatus();
 
         String msg4 = "Suddenly, the air shimmers and freezes. A portal of frost and ice appears.";
-        String msg5 = "You hear a cold, merciless voice echo from it... 'Silence. Stillness. Order.'";
+        String msg5 = "You hear a cold, merciless voice echo from it... Silence. Stillness. Order.";
         go.move(105 - (msg4.length() / 2), 44);
         System.out.println(msg4);
         go.move(105 - (msg5.length() / 2), 46);
