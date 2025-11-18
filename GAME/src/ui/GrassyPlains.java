@@ -588,28 +588,28 @@ public class GrassyPlains extends JFrame {
     { 
     	Slime() 
     	{ 
-    		super("Slime",35,6); 
+    		super("Slime",1,1); 
     	} 
     }
     static class Bull extends World1Mob 
     { 
     	Bull() 
     	{ 
-    		super("Bull",55,10); 
+    		super("Bull",1,1); 
     	} 
     }
     static class Wolf extends World1Mob 
     { 
     	Wolf() 
     	{ 
-    		super("Wolf",45,9); 
+    		super("Wolf",1,1); 
     	} 
     }
     static class Minotaur extends World1Mob 
     { 
     	Minotaur() 
     	{ 
-    		super("Minotaur",180,22); 
+    		super("Minotaur",1,1); 
     	} 
     }
 

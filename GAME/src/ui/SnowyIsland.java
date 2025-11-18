@@ -207,7 +207,7 @@ public class SnowyIsland extends JFrame {
 
             	if (ch == 0) {
             	    battleLog.append("You step into the portal... The Desert World awaits!\n\n");
-            	    new DesertWorld("Hero", "Warrior").setVisible(true);
+            	    new LavaWorld("Hero", "Warrior").setVisible(true);
             	    dispose();
             	} else {
             	    battleLog.append("You decide to return home to rest.\n\n");
@@ -471,28 +471,28 @@ public class SnowyIsland extends JFrame {
     {
     	SnowGolem() 
     	{
-    		super("SnowGolem",50,25); 
+    		super("SnowGolem",1,1); 
     	} 
     }
     static class WitchGnome extends World3Mob 
     { 
     	WitchGnome() 
     	{ 
-    		super("WitchGnome",40,23); 
+    		super("WitchGnome",1,1); 
     	} 
     }
     static class Yeti  extends World3Mob 
     { 
     	Yeti () 
     	{ 
-    		super("Yeti ",70,22); 
+    		super("Yeti ",1,1); 
     	} 
     }
     static class GiantFrostWolves extends World3Mob 
     { 
     	GiantFrostWolves() 
     	{ 
-    		super("Giant Frost Wolves",120,18); 
+    		super("Giant Frost Wolves",1,1); 
     	} 
     }
 

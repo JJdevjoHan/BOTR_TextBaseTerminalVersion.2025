@@ -206,7 +206,7 @@ public class LavaWorld extends JFrame {
 
             	if (ch == 0) {
             	    battleLog.append("You step into the portal... The Desert World awaits!\n\n");
-            	    new DesertWorld("Hero", "Warrior").setVisible(true);
+            	    new FinalWorld("Hero", "Warrior").setVisible(true);
             	    dispose();
             	} else {
             	    battleLog.append("You decide to return home to rest.\n\n");
@@ -285,9 +285,9 @@ public class LavaWorld extends JFrame {
 
             if (mobsDefeated == 3 && direction.equals(reservedSkeletonHeadDirection)) {
                 currentMob = new SkeletonHead();
-                battleLog.append("The Snowy Giant Frost Wolves has appeared!\n\n");
-                battleLog.append("The Minancing Growl of a Wolf...Awooooooooo!!\n\n");
-                JOptionPane.showMessageDialog(null,"GIANT FROST WOLF INCOMING!!!", "WARNING! MINIBOSS", JOptionPane.ERROR_MESSAGE);
+                battleLog.append("The Giant Head Skeleton has appeared!\n\n");
+                battleLog.append("The Minancing Aura of the Skeleton....skicles!!\n\n");
+                JOptionPane.showMessageDialog(null,"SKELETON HEAD INCOMING!!!", "WARNING! MINIBOSS", JOptionPane.ERROR_MESSAGE);
             }
             else {
                 currentMob = directionMobs.get(direction);
@@ -472,32 +472,34 @@ public class LavaWorld extends JFrame {
     {
     	LavaImp() 
     	{
-    		super("LavaImp", 5, 20); 
+    		super("LavaImp", 1, 1); 
     	} 
     }
     static class MagmaBeast extends World4Mob 
     { 
     	MagmaBeast() 
     	{ 
-    		super("MagmaBeast", 5, 18); 
+    		super("MagmaBeast", 1, 1); 
     	} 
     }
     static class Golem  extends World4Mob 
     { 
     	Golem() 
     	{ 
-    		super("Golem", 5, 20); 
+    		super("Golem",1, 1); 
     	} 
     }
     static class SkeletonHead extends World4Mob 
     { 
     	SkeletonHead() 
     	{ 
-    		super("SkeletonHead", 5, 10); 
+    		super("SkeletonHead", 1, 1); 
     	} 
     }
-
+    
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new LavaWorld("Hero","Warrior").setVisible(true));
     }
+
+  
 }

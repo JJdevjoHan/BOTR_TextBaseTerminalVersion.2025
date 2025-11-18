@@ -41,7 +41,7 @@ public class World5Boss extends World1Mob {
     
     public static class DemonLord extends World5Boss {
         public DemonLord() {
-            super("Demon Lord", 1, 35); //300
+            super("Demon Lord", 1, 1); //300
         }
         @Override
         public String specialSkill(Character target) {
@@ -53,7 +53,7 @@ public class World5Boss extends World1Mob {
 
     public static class Kyros extends World5Boss {
         public Kyros() {
-            super("General | Kyros", 1, 25); //160
+            super("General | Kyros", 1, 1); //160
         }
 
         @Override

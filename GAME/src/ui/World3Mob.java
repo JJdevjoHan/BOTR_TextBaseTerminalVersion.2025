@@ -8,7 +8,7 @@ public class World3Mob extends World1Mob {
 
     public static class GiantFrostWolves extends World3Mob {//boss
         public GiantFrostWolves() {
-            super("GiantFrostWolves", 120, 18);
+            super("GiantFrostWolves", 1, 1);
         }
         
         @Override
@@ -22,19 +22,19 @@ public class World3Mob extends World1Mob {
 
     public static class SnowGolem extends World3Mob {
         public SnowGolem() {
-            super("SnowGolem", 50, 25);
+            super("SnowGolem", 1, 1);
         }
     }
 
     public static class WitchGnome extends World3Mob {
         public WitchGnome() {
-            super("WitchGnome", 40, 23);
+            super("WitchGnome", 1, 1);
         }
     }
 
     public static class Yeti extends World3Mob {
         public Yeti() {
-            super("Yeti", 70, 22);
+            super("Yeti", 1, 1);
         }
     }
 }

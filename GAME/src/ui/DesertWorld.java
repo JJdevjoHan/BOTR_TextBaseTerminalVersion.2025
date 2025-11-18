@@ -461,28 +461,28 @@ public class DesertWorld extends JFrame {
     {
     	Spider() 
     	{
-    		super("Spider",40,12); 
+    		super("Spider",1,1); 
     	} 
     }
     static class Snake extends World2Mob 
     { 
     	Snake() 
     	{ 
-    		super("Snake",30,15); 
+    		super("Snake",1,1); 
     	} 
     }
     static class Mummy extends World2Mob 
     { 
     	Mummy() 
     	{ 
-    		super("Mummy",100,15); 
+    		super("Mummy",1,1); 
     	} 
     }
     static class GiantWorm extends World2Mob 
     { 
     	GiantWorm() 
     	{ 
-    		super("Giant Worm",60,13); 
+    		super("Giant Worm",1,1); 
     	} 
     }
 

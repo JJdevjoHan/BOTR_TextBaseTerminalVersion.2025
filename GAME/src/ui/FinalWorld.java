@@ -2,6 +2,9 @@ package ui;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import ui.LavaWorld.SkeletonHead;
+
 import java.awt.*;
 import java.util.Random;
 
@@ -139,6 +142,31 @@ public class FinalWorld extends JFrame {
         if (!currentMob.isAlive()) {
             battleLog.append("You defeated " + currentMob.name + "!\n\n");
             mobsDefeated++;
+            
+            if(currentMob instanceof DemonLord) {
+            	Object[] options = {"Go Home", "Play Again"};
+            	int ch = JOptionPane.showOptionDialog(
+            	        this,
+            	        "✨ The portal Back to Reality is open.\n\nWhat will you do?",
+            	        "Portal Opened",
+            	        JOptionPane.YES_NO_OPTION,
+            	        JOptionPane.QUESTION_MESSAGE,
+            	        null,
+            	        options,
+            	        options[0]
+            	);
+
+            	if (ch == 0) {
+            	    battleLog.append("You step into the portal... GoodBye!\n\n");
+            	    new FinalWorld("Hero", "Warrior").setVisible(true);
+            	    dispose();
+            	} else {
+            	    battleLog.append("You decide to return home and play again.\n\n");
+            	    new Intro().setVisible(true);
+            	    dispose();
+            	}
+
+            }
             currentMob = null;
             spawnNextMob();
         } else {
@@ -200,16 +228,18 @@ public class FinalWorld extends JFrame {
     }
 
     // Define MiniBoss and FinalBoss
-    static class Kyros extends World5Boss { Kyros() { super("Kyros", 150, 20); } }
-    static class DemonLord extends World5Boss { DemonLord() { super("DemonLord", 300, 30); } }
+    static class Kyros extends World5Boss { Kyros() { super("Kyros", 1, 1); } }
+    static class DemonLord extends World5Boss { DemonLord() { super("DemonLord", 1, 1); } }
 
     static abstract class World4Mob {
         String name; int hp, damage;
         World4Mob(String name, int hp, int dmg) { this.name=name; this.hp=hp; this.damage=dmg; }
         boolean isAlive() { return hp>0; }
     }
-
+    
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new FinalWorld("Hero","Warrior").setVisible(true));
     }
+
+ 
 }

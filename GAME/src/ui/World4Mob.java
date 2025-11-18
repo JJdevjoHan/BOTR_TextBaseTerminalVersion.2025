@@ -8,19 +8,19 @@ public class World4Mob extends World1Mob {
 
     public static class LavaImp extends World4Mob {
         public LavaImp() {
-            super("LavaImp", 5, 20);
+            super("LavaImp", 1, 1);
         }
     }
 
     public static class MagmaBeast extends World4Mob{
         public MagmaBeast(){
-            super("MagmaBeast", 5, 18);
+            super("MagmaBeast", 1, 1);
         }
     }   
 
     public static class SkeletonHead extends World4Mob{
         public SkeletonHead(){
-            super("SkeletonHead", 5, 10);
+            super("SkeletonHead", 1, 1);
         }
         
         @Override
@@ -34,7 +34,7 @@ public class World4Mob extends World1Mob {
 
     public static class Golem extends World4Mob{
         public Golem(){
-            super("Golem", 5, 20);
+            super("Golem", 1, 1);
         }
     }   
 }
