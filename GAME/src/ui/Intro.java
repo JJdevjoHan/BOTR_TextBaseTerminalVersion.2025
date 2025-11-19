@@ -17,8 +17,7 @@ public class Intro extends JFrame {
         setUndecorated(true);
         setOpacity(0f);       
 
-        
-        ImageIcon bgIcon = new ImageIcon("C:\\Users\\JOHAN\\Documents\\git\\Blood-Of-The-Rift_ProjectOOP\\GAME\\src\\ui\\images\\backgroundpic\\intro.jpg");
+        ImageIcon bgIcon = new ImageIcon("C:\\Users\\JOHAN\\Documents\\git\\Blood-Of-The-Rift_ProjectOOP\\GAME\\src\\ui\\images\\backgroundpic\\background2.png");
 
         Image bgImage = bgIcon.getImage();
 

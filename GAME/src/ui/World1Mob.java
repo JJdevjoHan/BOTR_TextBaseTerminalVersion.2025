@@ -1,5 +1,8 @@
 package ui;
 
+import ui.Character;
+import ui.World1Mob;
+
 public abstract class World1Mob {
     public String name;
     public int hp;
@@ -33,32 +36,32 @@ public abstract class World1Mob {
         int damage = (int)(this.damage * 1.5) + 5; 
         target.takeDamage(damage); // Silent
         
-        // Return the full message stng
+        // Return the full message string
         return name + " uses a special attack! Deals " + damage + " damage. ";
     }
 }
 
 class Slime extends World1Mob {
     public Slime() {
-        super("Slime", 1, 1);
+        super("Slime", 20, 5);
     }
 }
 
 class Bull extends World1Mob {
     public Bull() {
-        super("Wild Bull", 1, 1);
+        super("Wild Bull", 30, 8);
     }
 }
 
 class Wolf extends World1Mob {
     public Wolf() {
-        super("Dire Wolf", 1, 1);
+        super("Dire Wolf", 40, 10);
     }
 }
 
 class Minotaur extends World1Mob {
     public Minotaur() {
-        super("Minotaur", 1, 1);
+        super("Minotaur", 80, 12);
     } 
 
     @Override

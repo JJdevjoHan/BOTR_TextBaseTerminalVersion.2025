@@ -12,38 +12,38 @@ public abstract class World2Mob extends World1Mob {
         
         return name + " uses a devastating special attack! Deals " + damage + " damage. ";
     }
-}
-
-class Spider extends World2Mob {
-    public Spider() {
-        super("Spider", 1, 1);
-    }
-}
-
-class Snake extends World2Mob {
-    public Snake() {
-        super("Snake", 1, 1);
-    }
-}
-
-class GiantWorm extends World2Mob {
-    public GiantWorm() {
-        super("Giant Worm", 1, 1);
-    }
     
-    @Override
-    public String specialSkill(Character player) {
-        int specialDamage = 40; 
-        player.takeDamage(specialDamage); // Silent
+    public static class Spider extends World2Mob {
+    	public Spider() {
+    		super("Spider", 29, 12);//40
+    	}
+    }	
+
+    public static class Snake extends World2Mob {
+    	public Snake() {
+    		super("Snake", 30, 15); //30
+    	}
+    }
+
+    public static class GiantWorm extends World2Mob {
+    	public GiantWorm() {
+    		super("Giant Worm", 100, 13); //100
+    	}
+    	
+    	@Override
+    	public String specialSkill(Character player) {
+    		int specialDamage = 40; 
+    		player.takeDamage(specialDamage); // Silent
         
-        return name + " uses its venom touch! Deals " + specialDamage + " damage. ";
-    }
-}
-
-class Mummy extends World2Mob {
-    public Mummy() {
-        super("Mummy", 1, 1);
+    		return name + " uses its sand storm! Deals " + specialDamage + " damage. ";
+    	}
     }
 
+    public static class Mummy extends World2Mob {
+    	public Mummy() {
+    		super("Mummy", 30, 15); //60
+    	}
+
+    }
 }
 

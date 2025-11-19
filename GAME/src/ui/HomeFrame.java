@@ -5,8 +5,10 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.Insets;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -40,18 +42,26 @@ public class HomeFrame extends JFrame {
     public HomeFrame() {
         setTitle("Home Frame");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setMinimumSize(new Dimension(700, 500));
+        setSize(800, 500); 
+        setMinimumSize(new Dimension(600, 400));
         setLocationRelativeTo(null);
+        
+        ImageIcon bgIcon = new ImageIcon("C:\\Users\\JOHAN\\Documents\\git\\Blood-Of-The-Rift_ProjectOOP\\GAME\\src\\ui\\images\\backgroundpic\\background3.png");
 
-        // MAIN CONTAINER
-        JPanel contentPane = new JPanel(new BorderLayout(10, 10));
+        Image bgImage = bgIcon.getImage();
+        
+        //sa container
+        JPanel contentPane = new JPanel(new BorderLayout()) {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(bgImage, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+
         contentPane.setBorder(new EmptyBorder(20, 20, 20, 20));
-        contentPane.setBackground(Color.BLACK);
         setContentPane(contentPane);
 
-        // ============================
-        //  TOP PANEL: Title + Table
-        // ============================
         JPanel topPanel = new JPanel();
         topPanel.setOpaque(false);
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
@@ -65,12 +75,9 @@ public class HomeFrame extends JFrame {
         topPanel.add(lblTitle);
         topPanel.add(Box.createVerticalStrut(20));
 
-        // ============================
-        //  Table with Images
-        // ============================
         String[] columnNames = {"Paladin", "Mage", "Warrior"};
 
-        // Load images (update paths accordingly)
+        //mga picture
         ImageIcon paladinIcon = new ImageIcon("C:\\Users\\JOHAN\\eclipse-workspace\\AGAINUI\\src\\ui\\images\\playable\\paladin.png");
         ImageIcon mageIcon = new ImageIcon("C:\\Users\\JOHAN\\eclipse-workspace\\AGAINUI\\src\\ui\\images\\playable\\mage.png");
         ImageIcon warriorIcon = new ImageIcon("C:\\Users\\JOHAN\\eclipse-workspace\\AGAINUI\\src\\ui\\images\\playable\\warrior.png");
@@ -90,7 +97,7 @@ public class HomeFrame extends JFrame {
         table.setBackground(Color.BLACK);
         table.setForeground(Color.WHITE);
 
-        // Header styling
+        //styling sa header
         table.getTableHeader().setBackground(Color.BLACK);
         table.getTableHeader().setForeground(Color.WHITE);
         table.getTableHeader().setFont(new Font("Times New Roman", Font.BOLD, 16));
@@ -106,9 +113,7 @@ public class HomeFrame extends JFrame {
         topPanel.add(table);
         
         
-        // ============================
-        //  CENTER PANEL: Character Creation
-        // ============================
+        //charactercreation
         JPanel centerPanel = new JPanel(new GridBagLayout());
         centerPanel.setOpaque(false);
         centerPanel.setBorder(new LineBorder(Color.WHITE, 1, true));
@@ -116,7 +121,7 @@ public class HomeFrame extends JFrame {
 
         GridBagConstraints gbc;
 
-        // Name Label
+        //labelforname
         gbc = new GridBagConstraints();
         gbc.insets = new Insets(8, 8, 8, 8);
         gbc.gridx = 0;
@@ -126,7 +131,7 @@ public class HomeFrame extends JFrame {
         labelName.setForeground(Color.WHITE);
         centerPanel.add(labelName, gbc);
 
-        // Name Field
+        //namefield
         gbc = new GridBagConstraints();
         gbc.insets = new Insets(8, 8, 8, 8);
         gbc.gridx = 1;
@@ -135,7 +140,7 @@ public class HomeFrame extends JFrame {
         name = new JTextField(15);
         centerPanel.add(name, gbc);
 
-        // Class Label
+        //labelsaclass
         gbc = new GridBagConstraints();
         gbc.insets = new Insets(8, 8, 8, 8);
         gbc.gridx = 0;
@@ -145,7 +150,7 @@ public class HomeFrame extends JFrame {
         labelClass.setForeground(Color.WHITE);
         centerPanel.add(labelClass, gbc);
 
-        // Class Box
+        //classbox
         gbc = new GridBagConstraints();
         gbc.insets = new Insets(8, 8, 8, 8);
         gbc.gridx = 1;
@@ -154,7 +159,7 @@ public class HomeFrame extends JFrame {
         classbox = new JComboBox<>(new String[]{"Warrior", "Mage", "Paladin"});
         centerPanel.add(classbox, gbc);
 
-        // Confirm Button
+        //for the confirm button
         gbc = new GridBagConstraints();
         gbc.insets = new Insets(15, 8, 8, 8);
         gbc.gridx = 0;
@@ -165,12 +170,12 @@ public class HomeFrame extends JFrame {
         centerPanel.add(confirmBtn, gbc);
         
 
-     // Confirm Button Logic
+     //^logic sa confirm button
         confirmBtn.addActionListener(e -> {
             String playerName = name.getText().trim();
             String selectedClass = (String) classbox.getSelectedItem();
 
-            // Basic validations
+            //confirmation
             if (playerName.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Please enter a name.", "Error", JOptionPane.WARNING_MESSAGE);
                 return;
@@ -186,11 +191,7 @@ public class HomeFrame extends JFrame {
             }
             
             
-            // ================================
-            // CONFIRMATION MESSAGE ADDED HERE
-            // ================================
-            
-            // Show class info BEFORE confirmation (now using real data from Character classes)
+            //confirmation message
             showClassInfo(selectedClass);
 
             int choice = JOptionPane.showConfirmDialog(
@@ -202,10 +203,10 @@ public class HomeFrame extends JFrame {
             );
 
             if (choice != JOptionPane.YES_OPTION) {
-                return; // STOP if player selects NO
+                return; //mo stop if mo NO
             }
 
-            // If YES → proceed
+            //otherwise proceed
             JOptionPane.showMessageDialog(this,
                     "Character created!\nName: " + playerName + "\nClass: " + selectedClass);
 
@@ -221,9 +222,9 @@ public class HomeFrame extends JFrame {
         
     }
     
-    // Updated to dynamically pull stats from Character subclasses
+    
     private void showClassInfo(String className) {
-        Character tempChar = null;  // Temporary instance to get stats (using dummy name)
+        Character tempChar = null;  //temp instance sa character
         String description = "";
         
         switch (className) {
@@ -250,7 +251,7 @@ public class HomeFrame extends JFrame {
             classLabel.setFont(new Font("Serif", Font.BOLD, 16));
             classLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-            // Use real maxHp and maxMana from the Character instance
+            //instance sa char mp
             JLabel statsLabel = new JLabel("HP: " + tempChar.maxHp + "   Mana: " + tempChar.maxMana);
             statsLabel.setFont(new Font("Serif", Font.PLAIN, 14));
             statsLabel.setAlignmentX(Component.LEFT_ALIGNMENT);

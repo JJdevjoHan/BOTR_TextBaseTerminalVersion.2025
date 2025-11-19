@@ -2,6 +2,10 @@ package ui;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import ui.GrassyPlains.Character;
+import ui.GrassyPlains.World1Mob;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.*;
@@ -352,61 +356,144 @@ public class LavaWorld extends JFrame {
     }
 
     static class Warrior extends Character {
-    	
         Warrior(String n) {
-        	super(n,"Warrior",180,80); 
-        	}
+            super(n,"Warrior",180,80);
+        }
         @Override
         String useSkill(int choice, World4Mob target) {
-        	
-            int dmg = 0; String msg = "";
-           //?here
-            switch(choice) {
-                case 1: dmg = 5 + new Random().nextInt(6); target.hp -= dmg; mana += 10; msg="Stone Slash deals "+dmg; break;
-                case 2: if(mana>=20){ dmg = 12+new Random().nextInt(8); target.hp -= dmg; mana-=20; msg="Flame Strike deals "+dmg; } else msg="Not enough mana!"; break;
-                case 3: if(mana>=30){ dmg = 20+new Random().nextInt(15); target.hp -= dmg; mana-=30; msg="Earthquake Blade deals "+dmg; } else msg="Not enough mana!"; break;
+            int dmg = 0;
+            String msg = "";
+            switch (choice) {
+                case 1:
+                    dmg = 5 + new Random().nextInt(6);
+                    dmg += tempDamage; // apply damage buff if any
+                    target.hp -= dmg;
+                    mana = Math.min(maxMana, mana + 10);
+                    msg = "Stone Slash deals " + dmg;
+                    break;
+
+                case 2:
+                    if (mana >= 20) {
+                        dmg = 12 + new Random().nextInt(8);
+                        dmg += tempDamage;
+                        target.hp -= dmg;
+                        mana -= 20;
+                        msg = "Flame Strike deals " + dmg;
+                    } else {
+                        msg = "Not enough mana!";
+                    }
+                    break;
+
+                case 3:
+                    if (mana >= 30) {
+                        dmg = 20 + new Random().nextInt(15);
+                        dmg += tempDamage;
+                        target.hp -= dmg;
+                        mana -= 30;
+                        msg = "Earthquake Blade deals " + dmg;
+                    } else {
+                        msg = "Not enough mana!";
+                    }
+                    break;
+
+                default:
+                    msg = "Unknown skill.";
             }
-            if(mana<0) mana=0;
+            if (mana < 0) mana = 0;
             return msg;
         }
     }
 
-    static class Mage extends Character 
-    {
-        Mage(String n) 
-        {
-        	super(n,"Mage",120,150); 
+    static class Mage extends Character {
+        Mage(String n) {
+            super(n,"Mage",120,150);
         }
         @Override
         String useSkill(int choice, World4Mob target) {
-            int dmg=0; String msg="";
-            switch(choice) {
-                case 1: dmg=5+new Random().nextInt(6); target.hp-=dmg; mana+=10; if(mana>maxMana) mana=maxMana; msg="Frost Bolt deals "+dmg; break;
-                case 2: if(mana>=20){ dmg=11+new Random().nextInt(10); target.hp-=dmg; mana-=20; msg="Rune Burst deals "+dmg; } else msg="Not enough mana!"; break;
-                case 3: if(mana>=30){ dmg=21+new Random().nextInt(15); target.hp-=dmg; mana-=30; msg="Lightstorm deals "+dmg; } else msg="Not enough mana!"; break;
+            int dmg = 0;
+            String msg = "";
+            switch (choice) {
+                case 1:
+                    dmg = 5 + new Random().nextInt(6);
+                    dmg += tempDamage;
+                    target.hp -= dmg;
+                    mana = Math.min(maxMana, mana + 10);
+                    msg = "Frost Bolt deals " + dmg;
+                    break;
+
+                case 2:
+                    if (mana >= 20) {
+                        dmg = 11 + new Random().nextInt(10);
+                        dmg += tempDamage;
+                        target.hp -= dmg;
+                        mana -= 20;
+                        msg = "Rune Burst deals " + dmg;
+                    } else {
+                        msg = "Not enough mana!";
+                    }
+                    break;
+
+                case 3:
+                    if (mana >= 30) {
+                        dmg = 21 + new Random().nextInt(15);
+                        dmg += tempDamage;
+                        target.hp -= dmg;
+                        mana -= 30;
+                        msg = "Lightstorm deals " + dmg;
+                    } else {
+                        msg = "Not enough mana!";
+                    }
+                    break;
+
+                default:
+                    msg = "Unknown skill.";
             }
-            if(mana<0) mana=0;
+            if (mana < 0) mana = 0;
             return msg;
         }
     }
-
-    static class Paladin extends Character 
-    {
-        Paladin(String n) 
-        { 
-        	super(n,"Paladin",220,120); 
+    static class Paladin extends Character {
+        Paladin(String n) {
+            super(n,"Paladin",220,120);
         }
         @Override
-        String useSkill(int choice, World4Mob target) 
-        {
-            int dmg=0; String msg="";
-            switch(choice) 
-            {
-                case 1: dmg=5+new Random().nextInt(8); target.hp-=dmg; mana+=10; if(mana>maxMana) mana=maxMana; msg="Shield Bash deals "+dmg; break;
-                case 2: if(mana>=20){ mana-=20; msg="Radiant Guard! Damage reduced."; } else msg="Not enough mana!"; break;
-                case 3: if(mana>=30){ int heal=20+new Random().nextInt(16); hp+=heal; if(hp>maxHp) hp=maxHp; mana-=30; msg="Holy Renewal heals "+heal; } else msg="Not enough mana!"; break;
+        String useSkill(int choice, World4Mob target) {
+            int dmg = 0;
+            String msg = "";
+            switch (choice) {
+                case 1:
+                    dmg = 5 + new Random().nextInt(8);
+                    dmg += tempDamage;
+                    target.hp -= dmg;
+                    mana = Math.min(maxMana, mana + 10);
+                    msg = "Shield Bash deals " + dmg;
+                    break;
+
+                case 2:
+                    if (mana >= 20) {
+                        mana -= 20;
+                        msg = "Radiant Guard! Damage reduced.";
+                        // if you want a real reduction effect, we can add state here later
+                    } else {
+                        msg = "Not enough mana!";
+                    }
+                    break;
+
+                case 3:
+                    if (mana >= 30) {
+                        int heal = 20 + new Random().nextInt(16);
+                        mana -= 30;
+                        hp = Math.min(maxHp, hp + heal);
+                        msg = "Holy Renewal heals " + heal;
+                    } else {
+                        msg = "Not enough mana!";
+                    }
+                    break;
+
+                default:
+                    msg = "Unknown skill.";
             }
-            if(mana<0) mana=0;
+            if (mana < 0) mana = 0;
             return msg;
         }
     }
@@ -425,11 +512,10 @@ public class LavaWorld extends JFrame {
                 battleLog.append("Your maximum HP increased by " + hpBoost + "!\n\n");
                 JOptionPane.showMessageDialog(null, "HP INCREASED!", "Reward", JOptionPane.INFORMATION_MESSAGE);
                 break;
-            case 1: 
+            case 1:
                 int dmgBoost = 15;
                 player.tempDamage += dmgBoost;
                 battleLog.append("Your damage increased by " + dmgBoost + " for the next battle!\n\n");
-                JOptionPane.showMessageDialog(null, "DAMAGE INCREASED!", "Reward", JOptionPane.INFORMATION_MESSAGE);
                 break;
             case 2: 
                 int manaBoost = 20;
@@ -455,7 +541,7 @@ public class LavaWorld extends JFrame {
     }
 
 
-    static abstract class World4Mob 
+    public static abstract class World4Mob 
     {
         String name; int hp, damage;
         World4Mob(String name, int hp, int dmg)
@@ -467,35 +553,32 @@ public class LavaWorld extends JFrame {
         	return hp>0; 
         }
     }
+        
+        public static class LavaImp extends World4Mob {
+            public LavaImp() {
+                super("Lava Imp", 18, 20);
+            }
+        }
 
-    static class LavaImp extends World4Mob 
-    {
-    	LavaImp() 
-    	{
-    		super("LavaImp", 1, 1); 
-    	} 
-    }
-    static class MagmaBeast extends World4Mob 
-    { 
-    	MagmaBeast() 
-    	{ 
-    		super("MagmaBeast", 1, 1); 
-    	} 
-    }
-    static class Golem  extends World4Mob 
-    { 
-    	Golem() 
-    	{ 
-    		super("Golem",1, 1); 
-    	} 
-    }
-    static class SkeletonHead extends World4Mob 
-    { 
-    	SkeletonHead() 
-    	{ 
-    		super("SkeletonHead", 1, 1); 
-    	} 
-    }
+        public static class MagmaBeast extends World4Mob{
+            public MagmaBeast(){
+                super("Magma Beast", 20, 18);
+            }
+        }   
+
+        public static class SkeletonHead extends World4Mob{
+            public SkeletonHead(){
+                super("Skeleton Head", 120, 10);
+            }
+        }
+
+        public static class Golem extends World4Mob{
+            public Golem(){
+                super("Golem", 19, 20);
+            }
+        }
+
+  
     
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new LavaWorld("Hero","Warrior").setVisible(true));

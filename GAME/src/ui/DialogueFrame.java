@@ -5,7 +5,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
-
 import java.awt.*;
 
 public class DialogueFrame extends JFrame {
@@ -35,22 +34,31 @@ public class DialogueFrame extends JFrame {
     public DialogueFrame() {
         setTitle("Dialogue Frame");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(800, 500);
+        setSize(800, 500); 
         setMinimumSize(new Dimension(600, 400));
         setLocationRelativeTo(null);
+        
+        ImageIcon bgIcon = new ImageIcon("C:\\Users\\JOHAN\\Documents\\git\\Blood-Of-The-Rift_ProjectOOP\\GAME\\src\\ui\\images\\backgroundpic\\storyline1.png");
 
-        // Main container
-        JPanel contentPane = new JPanel(new BorderLayout());
-        contentPane.setBackground(Color.BLACK);
-        contentPane.setBorder(new EmptyBorder(40, 40, 40, 40));
+        Image bgImage = bgIcon.getImage();
+        
+        //sa container
+        JPanel contentPane = new JPanel(new BorderLayout()) {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(bgImage, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+
+        contentPane.setBorder(new EmptyBorder(20, 20, 20, 20));
         setContentPane(contentPane);
 
-        // Dynamic center container
+        // Dynamic
         JPanel centerPanel = new JPanel(new GridBagLayout());
         centerPanel.setOpaque(false);
         contentPane.add(centerPanel, BorderLayout.CENTER);
 
-        // STORY AREA (NO SCROLL)
         storyPane = new JTextPane();
         storyPane.setEditable(false);
         storyPane.setFocusable(false);
@@ -90,4 +98,5 @@ public class DialogueFrame extends JFrame {
         timer.setInitialDelay(0);
         timer.start();
     }
+    
 }

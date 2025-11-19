@@ -27,12 +27,24 @@ public class Loading extends JFrame {
 
         setTitle("Loading...");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(800, 500);
+        setSize(800, 500); 
+        setMinimumSize(new Dimension(600, 400));
         setLocationRelativeTo(null);
+        
+        ImageIcon bgIcon = new ImageIcon("C:\\Users\\JOHAN\\Documents\\git\\Blood-Of-The-Rift_ProjectOOP\\GAME\\src\\ui\\images\\backgroundpic\\storyline1.png");
 
-        JPanel contentPane = new JPanel(new BorderLayout());
-        contentPane.setBackground(Color.BLACK);
-        contentPane.setBorder(new EmptyBorder(40, 40, 40, 40));
+        Image bgImage = bgIcon.getImage();
+        
+        //sa container
+        JPanel contentPane = new JPanel(new BorderLayout()) {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(bgImage, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+
+        contentPane.setBorder(new EmptyBorder(20, 20, 20, 20));
         setContentPane(contentPane);
 
         JPanel centerPanel = new JPanel(new GridBagLayout());
@@ -67,7 +79,7 @@ public class Loading extends JFrame {
         timer.addActionListener(e -> {
             if (lineIndex >= storyLines.length) {
                 ((Timer) e.getSource()).stop();
-                // Small delay before opening GrassyPlains
+                
                 Timer delay = new Timer(500, ev -> {
                     new GrassyPlains(playerName, selectedClass).setVisible(true);
                     dispose();
@@ -94,6 +106,8 @@ public class Loading extends JFrame {
         });
         timer.start();
     }
+    
+ 
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new Loading("Hero", "Mage").setVisible(true));

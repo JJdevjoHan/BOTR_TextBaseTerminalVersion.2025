@@ -147,7 +147,7 @@ public class FinalWorld extends JFrame {
             	Object[] options = {"Go Home", "Play Again"};
             	int ch = JOptionPane.showOptionDialog(
             	        this,
-            	        "✨ The portal Back to Reality is open.\n\nWhat will you do?",
+            	        "The portal Back to Reality is open.\n\nWhat will you do?",
             	        "Portal Opened",
             	        JOptionPane.YES_NO_OPTION,
             	        JOptionPane.QUESTION_MESSAGE,
@@ -158,7 +158,7 @@ public class FinalWorld extends JFrame {
 
             	if (ch == 0) {
             	    battleLog.append("You step into the portal... GoodBye!\n\n");
-            	    new FinalWorld("Hero", "Warrior").setVisible(true);
+            	    new FinalWorld(player.name, player.className).setVisible(true);
             	    dispose();
             	} else {
             	    battleLog.append("You decide to return home and play again.\n\n");
@@ -228,8 +228,8 @@ public class FinalWorld extends JFrame {
     }
 
     // Define MiniBoss and FinalBoss
-    static class Kyros extends World5Boss { Kyros() { super("Kyros", 1, 1); } }
-    static class DemonLord extends World5Boss { DemonLord() { super("DemonLord", 1, 1); } }
+    static class Kyros extends World5Boss { Kyros() { super("General | Kyros", 160, 25); } }
+    static class DemonLord extends World5Boss { DemonLord() { super("Demon Lord", 300, 35);  } }
 
     static abstract class World4Mob {
         String name; int hp, damage;
